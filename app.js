@@ -4,7 +4,7 @@ const app = express();
 
 const DUMMY_EQUIPOS = [
     {
-        id:'t1',
+        id:'p1',
         equipo: 'Barcelona SC',
         jugador1:"Burrai",
         jugador2:"Díaz",
@@ -16,7 +16,7 @@ const DUMMY_EQUIPOS = [
 
     },
     {
-        id:'t2',
+        id:'p2',
         equipo: 'Barcelona FC',
         jugador1:"ter Stegen",
         jugador2:"Cancelo",
@@ -27,7 +27,7 @@ const DUMMY_EQUIPOS = [
         jugador7:"Pedrí"
     },
     {
-        id:'t3',
+        id:'p3',
         equipo: 'Machester United',
         jugador1:"Heaton",
         jugador2:"Lindelof",
@@ -43,12 +43,15 @@ app.get('/api/equipos',(req,res,next)=>{
     const equipos = DUMMY_EQUIPOS;
     res.send(equipos);
     next();
-})
+});
 
-app.get('/api/places/:tid',(req,res,next)=>{
-    const equipos = DUMMY_EQUIPOS.find(t=>{
-        return t.id == req.params.tid;
-    })
+app.get('/api/equipos/:pid',(req,res,next)=>{
+    const equipos = DUMMY_EQUIPOS.find(p=>{
+        return p.id == req.params.pid;
+    });
+
+    res.send(equipos);
+    next();
 });
 
 app.listen(3000);
